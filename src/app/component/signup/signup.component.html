@@ -1,0 +1,46 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <h3>Sign Up</h3>
+  
+    <div class="form-group">
+      <label for="firstname">First Name:</label>
+      <input formControlName="firstname" type="text" id="firstname" name="firstName" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="lastname">Last Name:</label>
+      <input formControlName="lastname" type="text" id="lastname" name="lastName" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input formControlName="phone" type="text" id="phone" name="phone" required>
+    </div>
+  
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input formControlName="email" type="email" id="email" name="email" required email>
+      <span *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email address.</span>
+    </div>
+  
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input formControlName="password" type="password" id="password" name="password" required minlength="8">
+      <span *ngIf="signupForm.get('password')?.hasError('minlength')">Password must be at least 8 characters long.</span>
+    </div>
+  
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <input formControlName="confirmPassword" type="password" id="confirmPassword" required minlength="8">
+      <span *ngIf="signupForm.get('confirmPassword')?.hasError('minlength')">Password must be at least 8 characters long.</span>
+    </div>
+  
+    <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+  </form>
+
+  <div>
+    <p *ngIf="response?.exist">{{response?.message}}</p>
+    <p [ngClass]="{'green-text':response?.otpsend}">{{response?.message}}</p>
+  </div>
+
+  <app-otp></app-otp>
+  
