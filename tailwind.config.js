@@ -2,7 +2,13 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'inknut': ['Inknut Antiqua', 'serif'],
+        'inter': ['Inter', 'sans-serif'],
+        'sacramento': ['Sacramento', 'cursive'],
+      },
+    },
   },
   plugins: [],
 }

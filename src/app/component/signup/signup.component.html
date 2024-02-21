@@ -1,46 +1,153 @@
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <h3>Sign Up</h3>
-  
-    <div class="form-group">
-      <label for="firstname">First Name:</label>
-      <input formControlName="firstname" type="text" id="firstname" name="firstName" required>
+<div class="min-h-screen flex items-center justify-center">
+  <div
+    class="flex flex-col w-full sm:max-w-md px-2 py-2 bg-white rounded-lg shadow-lg">
+    <div class="flex items-center justify-between">
+      <img
+        src="../../../assets/images/restoreradiance-high-resolution-logo-black.png"
+        alt=""
+        class="w-[65px] h-[50px] mr-4"/>
+      <h1 class="text-3xl font-bold font-['inter'] text-gray-900">
+        Your Journey To Home Renewal Begins Here!
+      </h1>
+    </div>
+
+    
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="flex flex-col items-center">
+          <div
+            class="self-stretch text-center text-stone-900 text-4xl font-semibold font-['Inter'] leading-[43.20px] ml-2 mb-6">
+            Create an account
+          </div>
+          <div class="form-group">
+            <input
+              formControlName="firstname"
+              type="text"
+              id="firstname"
+              name="firstName"
+              required
+              placeholder="firstName"
+              class="text-stone-300 text-sm font-medium font-['Inter'] leading-tight border-2 p-2 px-14 rounded-md"
+            />
+          </div>
+          <br/>
+
+          <div class="form-group">
+            <input
+              formControlName="lastname"
+              type="text"
+              id="lastname"
+              name="lastName"
+              placeholder="lastName"
+              required
+              class="text-stone-300 text-sm font-medium font-['Inter'] leading-tight border-2 p-2 px-14 rounded-md"/>
+          </div>
+          <br/>
+
+          <div class="form-group">
+            <input
+              formControlName="phone"
+              type="text"
+              id="phone"
+              name="phone"
+              required
+              placeholder="phone"
+              class="text-stone-300 text-sm font-medium font-['Inter'] leading-tight border-2 p-2 px-14 rounded-md"/>
+          </div>
+          <br/>
+
+          <div class="form-group">
+            <input
+              formControlName="email"
+              type="email"
+              id="email"
+              name="email"
+              required
+              email
+              placeholder="you@domain.com"
+              class="text-stone-300 text-sm font-medium font-['Inter'] leading-tight border-2 p-2 px-14 rounded-md"/><br />
+            <span *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email address.</span>
+          </div>
+          <br />
+
+          <div class="form-group">
+            <input
+              formControlName="password"
+              type="password"
+              id="password"
+              name="password"
+              required
+              minlength="8"
+              placeholder="password"
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+              class="text-stone-300 text-sm font-medium font-['Inter'] leading-tight border-2 p-2 px-14 rounded-md"/>
+              <br>
+              <span *ngIf="signupForm.get('password')?.hasError('minlength')">Password must be at least 8 characters
+              </span>
+              <br>
+              <small
+        *ngIf="
+          signupForm.controls['password']?.invalid &&
+          (signupForm.controls['password'].dirty ||
+            signupForm.controls['password'].touched)
+        "
+        class="text-red-600 "> must include uppercase & lowerase
+        letters,number <br> & a special character.</small>  
+          </div>
+        
+
+          <div class="form-group">
+            <input
+              formControlName="confirmPassword"
+              type="password"
+              id="confirmPassword"
+              required
+              minlength="8"
+              placeholder="confirm Password"
+              class="text-stone-300 text-sm font-medium font-['Inter'] leading-tight border-2 p-2 px-14 rounded-md"/>
+           <br>
+            <small
+              *ngIf="
+                signupForm.controls['confirmPassword']?.value !=
+                  signupForm.controls['password']?.value &&
+                signupForm.controls['confirmPassword'].touched
+              "
+              class="text-red-600">Passwords do not match</small>
+            <br/>
+            <span
+              *ngIf="signupForm.get('confirmPassword')?.hasError('minlength')">Password must be at least 8 characters
+            </span>
+          </div>
+          <div
+            class="px-14 h-[101px] flex-col justify-center items-center gap-[20px] flex">
+            <div
+              class="px-28 h-[40px] py-4 bg-stone-500 rounded-lg border-l border-r border-t border-b-2 border-stone-500 flex-col justify-center items-center gap-2.5 flex">
+              <div class="justify-center items-center gap-2 inline-flex">
+                <button
+                  type="submit"
+                  [disabled]="signupForm.invalid"
+                  class="text-center text-white text-base font-semibold font-['Inter'] leading-normal">
+                  Sign Up
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="justify-start items-center gap-1 inline-flex">
+            <div class="justify-start items-center gap-2.5 flex">
+              <div
+                class="text-black text-sm font-normal font-['Inter'] leading-tight mb-4">
+                Already an member?  <a routerLink="/login" class="text-stone-500">Login</a> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   
-    <div class="form-group">
-      <label for="lastname">Last Name:</label>
-      <input formControlName="lastname" type="text" id="lastname" name="lastName" required>
-    </div>
-  
-    <div class="form-group">
-      <label for="phone">Phone:</label>
-      <input formControlName="phone" type="text" id="phone" name="phone" required>
-    </div>
-  
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input formControlName="email" type="email" id="email" name="email" required email>
-      <span *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email address.</span>
-    </div>
-  
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input formControlName="password" type="password" id="password" name="password" required minlength="8">
-      <span *ngIf="signupForm.get('password')?.hasError('minlength')">Password must be at least 8 characters long.</span>
-    </div>
-  
-    <div class="form-group">
-      <label for="confirmPassword">Confirm Password:</label>
-      <input formControlName="confirmPassword" type="password" id="confirmPassword" required minlength="8">
-      <span *ngIf="signupForm.get('confirmPassword')?.hasError('minlength')">Password must be at least 8 characters long.</span>
-    </div>
-  
-    <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
-  </form>
 
   <div>
-    <p *ngIf="response?.exist">{{response?.message}}</p>
-    <p [ngClass]="{'green-text':response?.otpsend}">{{response?.message}}</p>
+    <p *ngIf="response?.exist">{{ response?.message }}</p>
+    <p [ngClass]="{ 'green-text': response?.otpsend }">
+      {{ response?.message }}
+    </p>
   </div>
-
-  <app-otp></app-otp>
   

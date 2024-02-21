@@ -1,1 +1,31 @@
-<p>login works!</p>
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-md p-8">
+      <img src="../../../assets/images/restoreradiance-high-resolution-logo-black.png" alt="" class="mx-auto  w-24">
+      <h1 class="text-2xl font-bold  text-center">Login</h1>
+  
+      <form  #loginform="ngForm"(ngSubmit)="onSubmit(loginform)">
+        <div class="mb-4">
+          <label for="username" class="block text-gray-700 text-sm font-bold mb-2">email</label>
+          <input type="text" id="username" ngModel name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+        </div>
+        <div class="mb-6">
+          <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+          <input type="password" ngModel id="password" name="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <input type="checkbox" id="remember" name="remember" class="mr-2 h-4 w-4 text-stone-600 focus:ring-2 focus:ring-stone-500 focus:ring-opacity-50">
+            <label for="remember" class="text-gray-700 text-sm font-light">Remember me</label>
+          </div>
+          <a href="/forgot-password" class="inline-block align-baseline font-bold text-sm text-stone-500 hover:text-stone-700">Forgot Password?</a></div>
+        <div class="mt-6">
+          <button type="submit" class="w-full bg-stone-500 text-white font-bold py-2 px-4 rounded hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-opacity-50">Login</button>
+        </div>
+      </form>
+  
+      <div class="mt-6 text-center text-sm">
+        Don't have an account? <a routerLink="/signup" class="text-stone-500 font-bold hover:text-stone-700">Sign Up</a>
+      </div>
+    </div>
+  </div>
+  

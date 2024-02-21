@@ -1,12 +1,23 @@
-<div >
-    <h1>ENTER THE OTP</h1>
-    <form (ngSubmit)="onSubmit()">
-        <div class="otp-input">
-          <input type="text" maxlength="6" minlength="6" [(ngModel)]="otpDigits" name="otp">
+
+<div class="text-center mt-8 flex flex-col w-full h-screen items-center justify-center">
+    <div class="w-[400px] h-[250px] border  border-black flex flex-col items-center justify-center rounded-lg">
+    <h1 class="text-2xl font-bold mb-4 font-['Inter'] text-black">ENTER THE OTP</h1>
+    <form (ngSubmit)="onSubmit()" class="max-w-xs mx-auto">
+        <div class="grid grid-cols-6 gap-2 mb-4">
+            <input type="text" #otp1 (input)="moveFocus($event, 1)" [(ngModel)]="otpDigits[0]" name="otp1" class="col-span-1 p-2 text-center border  border-black rounded" maxlength="1"  />
+            <input type="text" #otp2 (input)="moveFocus($event, 2)" [(ngModel)]="otpDigits[1]" name="otp2" class="col-span-1 p-2 text-center border border-black rounded" maxlength="1"  />
+            <input type="text" #otp3 (input)="moveFocus($event, 3)" [(ngModel)]="otpDigits[2]" name="otp3" class="col-span-1 p-2 text-center border border-black rounded" maxlength="1"  />
+            <input type="text" #otp4 (input)="moveFocus($event, 4)"[(ngModel)]="otpDigits[3]" name="otp4" class="col-span-1 p-2 text-center border border-black rounded" maxlength="1"  />
+            <input type="text" #otp5 (input)="moveFocus($event, 5)" [(ngModel)]="otpDigits[4]" name="otp5" class="col-span-1 p-2 text-center border border-black rounded" maxlength="1"  />
+            <input type="text" #otp6 (input)="moveFocus($event, 6)"[(ngModel)]="otpDigits[5]" name="otp6" class="col-span-1 p-2 text-center border border-black rounded" maxlength="1"  />
         </div>
-        <div class="btn">
-            <button type="submit">Submit OTP</button>
-            <button type="submit">Back</button>
+        <div>
+            <button type="submit" class="w-full bg-stone-500 text-white py-2 rounded hover:bg-stone-600 focus:outline-none">
+                Verify OTP
+            </button>
         </div>
     </form>
 </div>
+</div>
+
+
