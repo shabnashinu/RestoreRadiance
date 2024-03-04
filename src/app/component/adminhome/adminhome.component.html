@@ -1,0 +1,40 @@
+<div class="container mx-auto px-4 py-8">
+   <h1>ADMIN HOME</h1>
+    
+    <!-- Company and User Registrations Columns -->
+    
+    <div class="flex ">
+        <button (click)="click()">userlist</button>
+        <div class="w-4 h-4 rounded-full bg-red-500 flex justify-center items-center">{{numberofusers}}</div>
+    </div>
+
+        <!-- User Registrations Column -->
+        <div *ngIf="clicked" class="container mx-auto">
+            <div *ngIf="users.length > 0">
+              <h2 class="text-2xl font-bold mb-4">User List</h2>
+              <ul>
+                <li *ngFor="let user of users" class="bg-white shadow-md rounded-lg p-4 mb-4">
+                  <div class="mb-2">
+                    <strong class="font-bold">Name:</strong> {{ user.firstName }} {{ user.lastName }}
+                  </div>
+                  <div class="mb-2">
+                    <strong class="font-bold">Email:</strong> {{ user.email }}
+                  </div>
+                  <div class="mb-2">
+                    <strong class="font-bold">Phone:</strong> {{ user.phone }}
+                  </div>
+                  <div class="mb-2">
+                    <strong class="font-bold">Address:</strong> {{ user.address }}
+                  </div>
+                  <button (click)="sendingmessage(user.email)" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Accept</button>
+                </li>
+              </ul>
+            </div>
+            
+            <div *ngIf="users.length === 0">
+              <p>No users found</p>
+            </div>
+          </div>
+          
+        </div>
+

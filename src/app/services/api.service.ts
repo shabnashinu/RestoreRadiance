@@ -23,9 +23,18 @@ export class ApiService {
   private formdata: BehaviorSubject<FormData | null> =
     new BehaviorSubject<FormData | null>(null);
   constructor(private http: HttpClient) {}
+
+  private phone = new BehaviorSubject<any>(null);
+  phonedata$ = this.phone.asObservable();
+
   setFormData(formData: FormData): void {
     this.formdata.next(formData);
   }
+
+  setphone(data: any): void {
+    this.phone.next(data);
+  }
+
   getFormData(): BehaviorSubject<FormData | null> {
     return this.formdata;
   }
@@ -36,6 +45,7 @@ export class ApiService {
 
     return this.http.post<any>(endpoint, userData, { headers });
   }
+
   verifyotp(data: any): Observable<any> {
     console.log('anythinggggg');
 
@@ -50,5 +60,49 @@ export class ApiService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.post<any>(endpoint, phone, { headers });
+  }
+
+  verifyforgotpassword(data: any): Observable<any> {
+    const endpoint = `${this.apiUrl}/verify`;
+    const headers = new HttpHeaders({ 'contend-type': 'application/json' });
+
+    return this.http.post<any>(endpoint, data, { headers });
+  }
+
+  //resetpassword
+  resetpassword(data: any): Observable<any> {
+    const endpoint = `${this.apiUrl}/newpassword`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post<any>(endpoint, data, { headers });
+  }
+
+  //for company registration
+  registrationform(formdata: any): Observable<any> {
+    const endpoint = `${this.apiUrl}/companyroutes/registrationform`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post<any>(endpoint, formdata);
+  }
+
+  //for the registration of the user who want to upload their house and budget
+  userdata(data: any): Observable<any> {
+    const endpoint = `${this.apiUrl}/userRoute/user-registration-data`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post<any>(endpoint, data);
+  }
+
+  //list the users who registered for uploads
+  listuser(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/admin/listuser`);
+  }
+
+  //admin sending email
+  acceptuser(data: any): Observable<any> {
+    const endpoint = `${this.apiUrl}/admin/accept-user`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post<any>(endpoint, data);
   }
 }

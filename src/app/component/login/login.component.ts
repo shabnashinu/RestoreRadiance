@@ -35,7 +35,7 @@ export class LoginComponent {
           console.log(userType);
           
           if (userType === 'user') {
-            this.route.navigate(['/login']);
+            this.route.navigate(['/entryhome']);
           } else if (userType === 'admin') {
             this.route.navigate(['/admin/home']);
           }

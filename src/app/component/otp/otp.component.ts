@@ -13,11 +13,12 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 })
 export class OtpComponent implements OnInit {
   otpDigits: string[] = ['', '', '', '', '', ''];
-  // otpDigits!:number
 
   data!: any;
+  param: any;
 
   userdata!: any;
+  phoneNumber: Number = 0;
 
   @ViewChild('otp1') otp1Input!: ElementRef<HTMLInputElement>;
   @ViewChild('otp2') otp2Input!: ElementRef<HTMLInputElement>;
@@ -27,7 +28,6 @@ export class OtpComponent implements OnInit {
   @ViewChild('otp6') otp6Input!: ElementRef<HTMLInputElement>;
   auth: any;
 
-  // current api hint
   currentHint = '';
 
   constructor(
@@ -37,16 +37,25 @@ export class OtpComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    this.activatedRoute.queryParamMap.subscribe({
+    this.activatedRoute.queryParams.subscribe({
       next: (data: any) => {
-        console.log(data.params['option']);
-        this.currentHint = data.params['option'];
+        if (data) {
+          this.param = data['option'];
+          console.log(this.param);
+        }
       },
     });
 
     this.apicall.getFormData().subscribe((FormData) => {
       this.userdata = FormData;
       console.log('formdata:', this.userdata);
+    });
+
+    // Subscribe to emitted phone number
+    this.api.mobileNumberShareSubject$.subscribe({
+      next: (data) => {
+        this.phoneNumber = data;
+      },
     });
   }
 
@@ -80,7 +89,7 @@ export class OtpComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.currentHint == 'user-verify') {
+    if (this.param == 'user-verify') {
       this.verifyOtp();
     } else {
       this.verifyResetPassword();
@@ -94,21 +103,18 @@ export class OtpComponent implements OnInit {
 
     console.log(this.userdata);
 
-    this.data = { ...this.userdata, otp: joinedOtp };
+    this.data = { phone: this.phoneNumber, otp: joinedOtp };
 
     console.log(this.data);
 
-    this.apicall.verifyotp(this.data).subscribe((res) => {
+    this.apicall.forgotpassword(this.data).subscribe((res) => {
       console.log(res);
 
       this.api.saveToken(res.token);
       if (this.api.isAthenticated()) {
         console.log(this.api.getUserType);
-
-        if (this.api.getUserType() === 'user') {
-          console.log('navigating');
-          this.router.navigate(['/login']);
-        }
+          this.router.navigate(['/newpassword']);
+        
       }
     });
   }
@@ -134,7 +140,7 @@ export class OtpComponent implements OnInit {
 
         if (this.api.getUserType() === 'user') {
           console.log('navigating');
-          this.router.navigate(['/user/home']);
+          this.router.navigate(['/entryhome']);
         }
       }
     });

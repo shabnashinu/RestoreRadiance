@@ -1,14 +1,15 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { json } from 'express';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthServiceService {
   private apiUrl = 'Http://localhost:3000';
+  mobileNumberShareSubject$ = new BehaviorSubject<Number>(0);
 
   constructor(private http: HttpClient) {}
 
@@ -38,4 +39,6 @@ export class AuthServiceService {
     const loginUrl = `${this.apiUrl}/login`;
     return this.http.post<any>(loginUrl, credentials);
   }
+
+
 }
