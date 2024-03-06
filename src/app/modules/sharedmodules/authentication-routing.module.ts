@@ -10,6 +10,7 @@ import { OtpComponent } from 'src/app/component/otp/otp.component';
 import { RegistrationFormComponent } from 'src/app/component/registration-form/registration-form.component';
 import { ResetpasswordComponent } from 'src/app/component/resetpassword/resetpassword.component';
 import { SignupComponent } from 'src/app/component/signup/signup.component';
+import { UploadComponent } from 'src/app/component/upload/upload.component';
 import { UserRegistrationComponent } from 'src/app/component/user-registration/user-registration.component';
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'entryhome',component:EntryhomeComponent},
   {path:'registrationform',component:RegistrationFormComponent},
   {path:'adminhome',component:AdminhomeComponent},
-  {path:'UserRegistration',component:UserRegistrationComponent}
+  {path:'UserRegistration',component:UserRegistrationComponent},
+  {path:"upload", component:UploadComponent}
 ];
 
 @NgModule({

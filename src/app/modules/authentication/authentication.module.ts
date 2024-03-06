@@ -16,6 +16,8 @@ import { EntryhomeComponent } from 'src/app/component/entryhome/entryhome.compon
 import { RegistrationFormComponent } from 'src/app/component/registration-form/registration-form.component';
 import { AdminhomeComponent } from 'src/app/component/adminhome/adminhome.component';
 import { UserRegistrationComponent } from 'src/app/component/user-registration/user-registration.component';
+import { UploadComponent } from 'src/app/component/upload/upload.component';
+
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { UserRegistrationComponent } from 'src/app/component/user-registration/u
     EntryhomeComponent,
     RegistrationFormComponent,
     AdminhomeComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    UploadComponent
  
   ],
   imports: [
@@ -40,7 +43,8 @@ import { UserRegistrationComponent } from 'src/app/component/user-registration/u
     ReactiveFormsModule,
     AthenticationRoutingModule,
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
 })
 export class authentication {}

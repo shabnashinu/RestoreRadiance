@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 
+
 @Component({
   selector: 'app-registration-form',
   templateUrl: './registration-form.component.html',
@@ -94,7 +95,12 @@ export class RegistrationFormComponent {
       }
     } else {
       console.error('Invalid event target');
-    }
+    } 
+  }
+  getPdfUrl(file: File) {
+    return URL.createObjectURL(file);
   }
 }
+
+
 

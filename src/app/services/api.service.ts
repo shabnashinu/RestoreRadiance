@@ -85,6 +85,15 @@ export class ApiService {
     return this.http.post<any>(endpoint, formdata);
   }
 
+
+  //list the companies who registered
+  getcompanies(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/admin/listcompany`);
+  }
+
+
+
+
   //for the registration of the user who want to upload their house and budget
   userdata(data: any): Observable<any> {
     const endpoint = `${this.apiUrl}/userRoute/user-registration-data`;
@@ -98,11 +107,27 @@ export class ApiService {
     return this.http.get<any[]>(`${this.apiUrl}/admin/listuser`);
   }
 
-  //admin sending email
+  //admin sending email for companies
+  approvecompany(data:any):Observable<any> {
+    const endpoint = `${this.apiUrl}/admin/approvecompany`;
+    return this.http.post<any>(endpoint,data);
+  }
+
+
+
+  //admin sending email for users
   acceptuser(data: any): Observable<any> {
     const endpoint = `${this.apiUrl}/admin/accept-user`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     return this.http.post<any>(endpoint, data);
+  }
+
+  //check if the user is registered or not
+  isUserRegistered(data: any): Observable<any> {
+    const endpoint = `${this.apiUrl}/userRoute/upload`;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post<any>(endpoint, { data });
   }
 }
