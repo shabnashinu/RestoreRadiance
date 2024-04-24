@@ -28,6 +28,23 @@ export class AuthServiceService {
     return '';
   }
 
+  getUserId(): string {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        return decodedToken.id || ''; // Return userID if present, otherwise return empty string
+      } catch (error) {
+        console.error('Error decoding token:', error);
+      }
+    }
+    return ''; // Return empty string if token is not present or decoding fails
+  }
+
+
+
+
+
   saveToken(token: string) {
     localStorage.setItem('token', token);
   }

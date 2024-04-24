@@ -1,150 +1,284 @@
+<!-- Navigation -->
+<nav class="bg-stone-800 text-white p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="#">
+      <img
+        class="h-12"
+        src="../../../assets/images/restoreradiance-high-resolution-logo-black.png"
+        alt="Logo"
+      />
+    </a>
+    <ul class="flex space-x-4">
+      <li>
+        <a href="#registration" class="hover:text-gray-300 font-inknut"
+          >REGISTRATION</a
+        >
+      </li>
+      <li>
+        <a href="#approval-request" class="hover:text-gray-300 font-inknut"
+          >APPROVAL REQUEST</a
+        >
+      </li>
+      <li>
+        <a href="#designs" class="hover:text-gray-300 font-inknut">DESIGN</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
-    <!-- Navigation -->
-    <nav class="bg-stone-800 text-white p-4">
-        <div class="container mx-auto flex justify-between items-center">
-          <a href="#">
-            <img class="h-12" src="../../../assets/images/restoreradiance-high-resolution-logo-black.png" alt="Logo">
-          </a>
-          <ul class="flex space-x-4">
-            <li><a href="#registration" class="hover:text-gray-300 font-inknut">REGISTRATION</a></li>
-            <li><a href="#approval-request" class="hover:text-gray-300 font-inknut">APPROVAL REQUEST</a></li>
-            <li><a href="#designs" class="hover:text-gray-300 font-inknut">DESIGN</a></li>
-          </ul>
+<!-- Hero Section -->
+<header class="bg-stone-800 text-white py-20">
+  <div class="container mx-auto text-center">
+    <h1
+      class="text-4xl font-bold font-inknut mb-4 transition duration-300 hover:text-stone-400"
+    >
+      Welcome to Restore Radiance Home Renovation
+    </h1>
+    <p class="text-lg font-thin font-sans">
+      We bring your dream home to reality
+    </p>
+    <a
+      href="/signup"
+      class="inline-block mt-4 bg-stone-600 hover:bg-stone-700 text-white font-bold py-2 px-6 rounded"
+      >Get Started</a
+    >
+  </div>
+</header>
+
+<!-- Registration Section -->
+<section id="registration" class="py-20">
+  <div class="container mx-auto">
+    <h2
+      class="text-3xl font-bold text-center font-inknut mb-8 transition duration-300 hover:text-stone-400"
+    >
+      REGISTRATION & APPROVAL REQUEST
+    </h2>
+    <div class="flex justify-center space-x-8">
+      <!-- User Registration -->
+      <div class="bg-white p-8 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold font-inknut mb-4">
+          Company Registration
+        </h3>
+        <p class="text-gray-600 mb-4">
+          Register your company for further process
+        </p>
+        <div class="flex justify-between">
+          <a
+            href="/registrationform"
+            class="bg-stone-700 text-white font-semibold py-2 px-6 hover:bg-stone-800"
+            >Register Your Company</a
+          ><a
+            (click)="checkcompanyregistration()"
+            class="bg-stone-700 text-white font-semibold py-2 px-8 ml-2 hover:bg-stone-800"
+            >upload</a
+          >
         </div>
-      </nav>
-      
-   
-   
-  <!-- Hero Section -->
-  <header class="bg-stone-800 text-white py-20">
-    <div class="container mx-auto text-center">
-      <h1 class="text-4xl font-bold font-inknut mb-4 transition duration-300 hover:text-stone-400">Welcome to Restore Radiance Home Renovation</h1>
-      <p class="text-lg font-thin font-sans ">We bring your dream home to reality</p>
-      <a href="/signup" class="inline-block mt-4 bg-stone-600 hover:bg-stone-700 text-white font-bold py-2 px-6 rounded">Get Started</a>
+      </div>
+      <!-- Company Registration -->
+      <div class="bg-white p-8 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold font-inknut mb-4">
+          User Registration
+        </h3>
+        <p class="text-gray-600 mb-4">
+          Register for uploading your house and budget
+        </p>
+        <div class="flex justify-between">
+          <a
+            href="/userRegistration"
+            class="bg-stone-700 text-white font-semibold py-2 px-6 hover:bg-stone-800"
+            >Register For Renovation</a
+          ><a
+            (click)="checkRegistration()"
+            class="bg-stone-700 text-white font-semibold py-2 px-6 hover:bg-stone-800"
+            >upload</a
+          >
+        </div>
+      </div>
     </div>
-  </header>
+  </div>
+</section>
 
-    <!-- Registration Section -->
-    <section id="registration" class="py-20">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-center font-inknut mb-8 transition duration-300 hover:text-stone-400">REGISTRATION & APPROVAL REQUEST</h2>
-            <div class="flex justify-center space-x-8">
-                <!-- User Registration -->
-                <div class="bg-white p-8 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold font-inknut mb-4">Company Registration</h3>
-                    <p class="text-gray-600 mb-4">Register your company for further process</p>
-                    <a href="/registrationform" class="bg-stone-700 text-white font-semibold py-2 px-6  hover:bg-stone-800">Register Your Company</a>
-                </div>
-                <!-- Company Registration -->
-                <div class="bg-white p-8 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold font-inknut mb-4">User Registration</h3>
-                    <p class="text-gray-600 mb-4">Register for uploading your house and budget</p>
-                    <div class="flex justify-between">
-                    <a href="/user-registration" class="bg-stone-700 text-white font-semibold py-2 px-6  hover:bg-stone-800">Register For Renovation</a><a (click)="checkRegistration()" class="bg-stone-700 text-white font-semibold py-2 px-6  hover:bg-stone-800">upload</a>
-                  </div>
-                </div>
-            </div>
+<!-- Approval Request Section -->
+<section id="approval-request" class="py-20 bg-stone-800">
+  <div class="flex">
+    <div class="container mx-auto">
+      <h2
+        class="text-3xl font-bold font-inknut text-white text-center mb-8 transition duration-300 hover:text-stone-400"
+      >
+        COMPANY PROJECTS
+      </h2>
+      <div class="flex justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold font-inknut mb-4">
+            Tap To See The Company Projects
+          </h3>
+          <a
+            href="/companyupload"
+            class="bg-stone-700 text-white font-semibold py-2 px-[134px] hover:bg-stone-800"
+            (click)="getuser()"
+            >Click</a
+          >
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="container mx-auto">
+      <h2
+        class="text-3xl font-bold font-inknut text-white text-center mb-8 transition duration-300 hover:text-stone-400"
+      >
+        USER HOUSES
+      </h2>
+      <div class="flex justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold font-inknut mb-4">
+            Tap To See The User uploads
+          </h3>
+          <a
+            href="/useruploads"
+            class="bg-stone-700 text-white font-semibold py-2 px-[134px] hover:bg-stone-800"
+            (click)="getcompany()"
+            >Click</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Approval Request Section -->
-    <section id="approval-request" class="py-20 bg-stone-800">
-        <div class="container mx-auto">
-            <h2 class="text-3xl font-bold font-inknut text-white text-center mb-8 transition duration-300 hover:text-stone-400">COMPANY PROJECTS</h2>
-            <div class="flex justify-center">
-                <!-- User Approval Request -->
-                <div class="bg-white p-8 rounded-lg shadow-md">
-                    <h3 class="text-xl font-semibold font-inknut mb-4">Tap To See The Company Projects</h3>
-                    <a href="#" class="bg-stone-700  text-white font-semibold py-2 px-[134px]  hover:bg-stone-800">Click</a>
-                </div>
-            </div>
+<!-- Designs Section -->
+<section id="designs" class="py-20">
+  <div class="container mx-auto">
+    <br /><br />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Sample Design Cards -->
+      <div class="bg-white rounded-lg shadow-md">
+        <img
+          src="../../../assets/images/black luxury house.jpg"
+          alt="Design Image"
+          class="w-full h-64 object-cover"
+        />
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2 font-inknut">Bungalow</h3>
+          <p class="text-gray-600 font-inknut">
+            Bungalow. Square shaped single-storeyed houses are typically known
+            as bungalows. A large front porch also characterises them.
+          </p>
         </div>
-    </section>
+      </div>
+      <div class="bg-white rounded-lg shadow-md">
+        <img
+          src="../../../assets/images/home.webp"
+          alt="Design Image"
+          class="w-full h-64 object-cover"
+        />
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2 font-inknut">Villa</h3>
+          <p class="text-gray-600 font-inknut">
+            Villa can also refer to a freestanding comfortable-sized house, on a
+            large block, generally found in the suburbs, and in Victorian
+            terraced housing,
+          </p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md">
+        <img
+          src="../../../assets/images/traditional with modern home.jpg"
+          alt="Design Image"
+          class="w-full h-64 object-cover"
+        />
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2 font-inknut">The Cottage</h3>
+          <p class="text-gray-600 font-inknut">
+            The top of the most popular house names 'The Cottage'. This is most
+            likely due to the popularity of number of smaller, traditional style
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br /><br /><br />
+<!-- Footer -->
+<footer class="bg-stone-800 py-8">
+  <div class="container mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div
+      class="col-span-2 md:col-span-1 border-b border-white md:border-b-0 md:border-r"
+    >
+      <h3 class="text-white text-lg font-semibold mb-4 font-inknut text-[25px]">
+        RestoreRadiance
+      </h3>
+      <br /><br />
+      <p class="text-gray-300 font-serif">
+        RestoreRadiance is your partner in creating stunning living spaces. With
+        a focus on innovation , we bring your vision to life with meticulous
+        attention to detail. our skilled team delivers exceptional results that
+        exceed expectations. Let us illuminate your home's potential and restore
+        its radiance.
+      </p>
+    </div>
+    <div
+      class="col-span-2 md:col-span-1 border-b border-white md:border-b-0 md:border-r"
+    >
+      <h3 class="text-white text-lg font-semibold font-inknut text-[25px] mb-4">
+        Navigation
+      </h3>
+      <br /><br />
+      <ul>
+        <li>
+          <a href="#" class="text-gray-300 hover:text-white font-serif"
+            >Designs</a
+          >
+        </li>
+        <li>
+          <a href="#" class="text-gray-300 hover:text-white font-serif"
+            >Contact</a
+          >
+        </li>
+        <li>
+          <a href="#" class="text-gray-300 hover:text-white font-serif">Team</a>
+        </li>
+        <li>
+          <a href="#" class="text-gray-300 hover:text-white font-serif"
+            >Project</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-span-2 md:col-span-1 border-gray-700">
+      <h3 class="text-white text-lg font-semibold mb-4 font-inknut text-[25px]">
+        Follow Us
+      </h3>
+      <br /><br />
+      <ul class="flex flex-col">
+        <li class="mr-4">
+          <a href="#" class="text-gray-300 hover:text-white">
+            <i class="fab fa-linkedin"></i>
+            <span class="ml-1 font-serif">@RestoreRadiance</span>
+          </a>
+        </li>
+        <li class="mr-4">
+          <a href="#" class="text-gray-300 hover:text-white">
+            <i class="fab fa-instagram"></i>
+            <span class="ml-1 font-serif">@RestoreRadiance</span>
+          </a>
+        </li>
+        <li class="mr-4">
+          <a href="#" class="text-gray-300 hover:text-white">
+            <i class="fab fa-facebook"></i>
+            <span class="ml-1 font-serif">@RestoreRadiance</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="text-gray-300 hover:text-white">
+            <i class="fab fa-youtube"></i>
+            <span class="ml-1 font-serif">@RestoreRadiance</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <br /><br />
 
-    <!-- Designs Section -->
-    <section id="designs" class="py-20">
-        <div class="container mx-auto">
-            <br><br>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Sample Design Cards -->
-                <div class="bg-white rounded-lg shadow-md">
-                    <img src="../../../assets/images/black luxury house.jpg" alt="Design Image" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 font-inknut">Bungalow</h3>
-                        <p class="text-gray-600 font-inknut">Bungalow. Square shaped single-storeyed houses are typically known as bungalows. A large front porch also characterises them.</p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-lg shadow-md">
-                    <img src="../../../assets/images/home.webp" alt="Design Image" class="w-full h-64 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-2 font-inknut">Villa</h3>
-                        <p class="text-gray-600 font-inknut">Villa can also refer to a freestanding comfortable-sized house, on a large block, generally found in the suburbs, and in Victorian terraced housing,</p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-lg shadow-md">
-                    <img src="../../../assets/images/traditional with modern home.jpg" alt="Design Image" class="w-full h-64 object-cover">
-                    <div class="p-6"> 
-                        <h3 class="text-xl font-semibold mb-2 font-inknut">The Cottage</h3>
-                        <p class="text-gray-600 font-inknut">The top of the most popular house names 'The Cottage'. This is most likely due to the popularity of number of smaller, traditional style </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <br><br><br>
-    <!-- Footer -->
-    <footer class="bg-stone-800 py-8">
-        <div class="container mx-auto grid grid-cols-2 md:grid-cols-3 gap-4">
-          <div class="col-span-2 md:col-span-1 border-b border-white md:border-b-0 md:border-r">
-            <h3 class="text-white text-lg font-semibold mb-4 font-inknut text-[25px]">RestoreRadiance</h3><br><br>
-            <p class="text-gray-300  font-serif">RestoreRadiance is your partner in creating stunning living spaces. With a focus on innovation , we bring your vision to life with meticulous attention to detail.  our skilled team delivers exceptional results that exceed expectations. Let us illuminate your home's potential and restore its radiance.</p>
-          </div>
-          <div class="col-span-2 md:col-span-1 border-b border-white md:border-b-0 md:border-r">
-            <h3 class="text-white text-lg font-semibold font-inknut text-[25px] mb-4">Navigation</h3><br><br>
-            <ul>
-              <li><a href="#" class="text-gray-300 hover:text-white font-serif">Designs</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-white font-serif">Contact</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-white font-serif">Team</a></li>
-              <li><a href="#" class="text-gray-300 hover:text-white font-serif">Project</a></li>
-            </ul>
-          </div>
-          <div class="col-span-2 md:col-span-1 border-gray-700">
-            <h3 class="text-white text-lg font-semibold mb-4 font-inknut text-[25px]">Follow Us</h3><br><br>
-            <ul class="flex flex-col">
-              <li class="mr-4">
-                <a href="#" class="text-gray-300 hover:text-white">
-                  <i class="fab fa-linkedin"></i> 
-                  <span class="ml-1 font-serif">@RestoreRadiance</span>
-                </a>
-              </li>
-              <li class="mr-4">
-                <a href="#" class="text-gray-300 hover:text-white">
-                  <i class="fab fa-instagram"></i> 
-                  <span class="ml-1 font-serif">@RestoreRadiance</span>
-                </a>
-              </li>
-              <li class="mr-4">
-                <a href="#" class="text-gray-300 hover:text-white">
-                  <i class="fab fa-facebook"></i>
-                  <span class="ml-1  font-serif">@RestoreRadiance</span>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="text-gray-300 hover:text-white">
-                  <i class="fab fa-youtube"></i>
-                  <span class="ml-1 font-serif">@RestoreRadiance</span>
-                </a>
-              </li>
-            </ul>
-            
-          </div>
-        </div>
-        <br><br>
-    
-          <div class="container mx-auto text-center text-white">
-            <p class="font-inknut">&copy; 2022 Home Renovation. All rights reserved.</p>
-          </div>
-        
-      </footer>
-      
-
+  <div class="container mx-auto text-center text-white">
+    <p class="font-inknut">&copy; 2022 Home Renovation. All rights reserved.</p>
+  </div>
+</footer>

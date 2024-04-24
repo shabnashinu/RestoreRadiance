@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class UserRegistrationComponent {
 
   registrationForm!: FormGroup
   userService: any;
-  constructor(private formBuilder: FormBuilder , private registrationapi:ApiService) { }
+  
+  constructor(private formBuilder: FormBuilder , private registrationapi:ApiService, private router:Router) { }
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
@@ -33,7 +35,14 @@ export class UserRegistrationComponent {
         this.registrationapi.userdata(this.registrationForm.value)
         .subscribe(
           response => {
-            console.log('Backend response:', response);  
+            console.log('Backend response:', response); 
+            if (response && response.email) {
+              this.registrationapi.setuserEmail(response.email);
+              this.router.navigate(['/entryhome']);
+              console.log(response);
+              
+            }
+            
           },
           error => {
             console.error('Error:', error);

@@ -41,6 +41,11 @@ export class RegistrationFormComponent {
     this.registrationformapi.registrationform(formdata).subscribe(
       (response) => {
       console.log('Form submission successful:', response);
+      if (response && response.email) {
+        this.registrationformapi.setEmail(response.email);
+        console.log(response);
+        
+      }
     },
     (error)=>{
       console.error('Form submission error:', error);

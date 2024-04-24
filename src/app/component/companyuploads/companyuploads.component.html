@@ -1,0 +1,107 @@
+<!-- company-uploads.component.html -->
+<div *ngIf="uploads && uploads.length > 0; else noUploads" class="mt-8">
+  <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <li *ngFor="let upload of uploads" class="bg-white rounded-lg shadow-md">
+      <div class="p-4">
+        <img
+          [src]="upload.picture"
+          alt="Project Image"
+          class="w-full h-auto rounded-t-lg"
+        />
+      </div>
+      <div class="p-4">
+        <h3 class="text-xl font-semibold mb-2">{{ upload.title }}</h3>
+        <p class="text-gray-700">{{ upload.description }}</p>
+        <p class="text-gray-700">{{ upload.email }}</p>
+      </div>
+      <div class="flex justify-end px-4 pb-4">
+        <button
+        *ngIf="usertype === 'company'"
+          type="button"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mr-2 transition duration-300 ease-in-out"
+          (click)="openUpdateForm(upload.email)"
+        >
+          Edit
+        </button>
+        <button
+        *ngIf="usertype === 'company'"
+          type="button"
+          class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
+          (click)="deleteupload(upload.email)"
+        >
+          Delete
+        </button>
+      
+        <button
+          type="button"
+          class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 ml-2 rounded transition duration-300 ease-in-out"
+          [routerLink]="['/chat']" [queryParams]="{userType:'user', companyid:upload.email }"
+        >
+          Open chat
+        </button>
+      </div>
+      <div *ngIf="showUpdateForm === upload.email" class="px-4">
+        <form (submit)="updatecompanydata()">
+          <div class="mb-4">
+            <label
+              for="newBudget"
+              class="block text-sm font-semibold text-gray-800 mb-2"
+              >New Title</label
+            >
+            <input
+              type="text"
+              class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="newtitle"
+              placeholder="Enter new title"
+              name="newtitle"
+              #newtitle
+              required
+              [(ngModel)]="Newtitle"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="newBudget"
+              class="block text-sm font-semibold text-gray-800 mb-2"
+              >New Description</label
+            >
+            <input
+              type="text"
+              class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="newdescription"
+              placeholder="Enter new description"
+              name="description"
+              #description
+              required
+              [(ngModel)]="newdescription"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="picture"
+              class="block text-sm font-semibold text-gray-800 mb-2"
+              >Select New project:</label
+            >
+            <input
+              type="file"
+              id="picture"
+              name="picture"
+              class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              (change)="onFileSelected($event)"
+            />
+          </div>
+          <button
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded transition duration-300 ease-in-out"
+          >
+            Update
+          </button>
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<ng-template #noUploads>
+  <p class="text-center mt-8">No company uploads available</p>
+</ng-template>

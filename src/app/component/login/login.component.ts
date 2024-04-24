@@ -12,6 +12,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 export class LoginComponent {
   error: any;
   loginform!: NgForm;
+  isloading:boolean=false
 
   constructor(
     private api: ApiService,
@@ -22,6 +23,7 @@ export class LoginComponent {
   password: string = '';
 
   onSubmit(form: NgForm) {
+    this.isloading=true
     console.log('Form submitted!');
     console.log(form.value);
 
@@ -33,8 +35,8 @@ export class LoginComponent {
         if (this.authservice.isAthenticated()) {
           const userType = this.authservice.getUserType();
           console.log(userType);
-          
-          if (userType === 'user') {
+          this.isloading=false
+          if (userType === 'user' || userType === 'company') {
             this.route.navigate(['/entryhome']);
           } else if (userType === 'admin') {
             this.route.navigate(['/admin/home']);

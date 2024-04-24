@@ -17,6 +17,11 @@ import { RegistrationFormComponent } from 'src/app/component/registration-form/r
 import { AdminhomeComponent } from 'src/app/component/adminhome/adminhome.component';
 import { UserRegistrationComponent } from 'src/app/component/user-registration/user-registration.component';
 import { UploadComponent } from 'src/app/component/upload/upload.component';
+import { UseruploadsComponent } from 'src/app/component/useruploads/useruploads.component';
+import { ProjectuploadComponent } from 'src/app/component/projectupload/projectupload.component';
+import { CompanyuploadsComponent } from 'src/app/component/companyuploads/companyuploads.component';
+import { LoadingComponent } from 'src/app/component/loading/loading.component';
+
 
 
 
@@ -35,7 +40,12 @@ import { UploadComponent } from 'src/app/component/upload/upload.component';
     RegistrationFormComponent,
     AdminhomeComponent,
     UserRegistrationComponent,
-    UploadComponent
+    UploadComponent,
+    UseruploadsComponent,
+    ProjectuploadComponent,
+    CompanyuploadsComponent,
+    LoadingComponent,
+    
  
   ],
   imports: [
@@ -44,7 +54,8 @@ import { UploadComponent } from 'src/app/component/upload/upload.component';
     AthenticationRoutingModule,
     CommonModule,
     HttpClientModule,
-    
+ 
+   
   ],
 })
 export class authentication {}

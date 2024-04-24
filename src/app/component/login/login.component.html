@@ -22,10 +22,11 @@
           <button type="submit" class="w-full bg-stone-500 text-white font-bold py-2 px-4 rounded hover:bg-stone-600 focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-opacity-50">Login</button>
         </div>
       </form>
-  
+      <app-loading *ngIf="isloading"></app-loading>
       <div class="mt-6 text-center text-sm">
         Don't have an account? <a routerLink="/signup" class="text-stone-500 font-bold hover:text-stone-700">Sign Up</a>
       </div>
     </div>
   </div>
+ 
   

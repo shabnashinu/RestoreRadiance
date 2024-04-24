@@ -1,18 +1,20 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { response } from 'express';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-upload',
-  templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.css'],
+  selector: 'app-projectupload',
+  templateUrl: './projectupload.component.html',
+  styleUrls: ['./projectupload.component.css']
 })
-export class UploadComponent {
+export class ProjectuploadComponent {
+
   email: string = '';
+  title:string ='';
+  description:string = '';
   picture!: string;
-  budget: string = '';
   registrationmessage: string = '';
+
 
   formData = new FormData();
 
@@ -25,21 +27,20 @@ export class UploadComponent {
       this.formData.set('picture',picture);
     }
   }
-
   onSubmit() {
-    this.formData.append('email', this.email);
-    this.formData.append('budget', this.budget);
+    this.formData.append('email',this.email)
+    this.formData.append('title',this.title)
+    this.formData.append('description',this.description)
 
-    console.log(this.formData);
 
-    this.service.isUserRegistered(this.formData).subscribe({
+    this.service.iscompanyregistered(this.formData).subscribe({
       next: (data) => {
         console.log(data);
         if (data.registered) {
-          console.log('User is registered');
-          this.router.navigate(['/useruploads']);
+          console.log('company is registered');
+          this.router.navigate(['/companyuploads']);
         } else {
-          console.log('User is not registered');
+          console.log('company is not registered');
           this.registrationmessage = 'You need to register first.'; 
         }
       },
@@ -48,4 +49,5 @@ export class UploadComponent {
       },
     });
   }
+  
 }

@@ -1,0 +1,89 @@
+<div class="overflow-x-auto">
+  <div class="flex whitespace-nowrap">
+    <div
+      *ngFor="let user of res"
+      class="flex-shrink-0 bg-white shadow-lg rounded-lg overflow-hidden mx-4 my-4 max-w-sm"
+    >
+      <div class="p-4">
+        <img
+          [src]="user.picture"
+          alt="User Home"
+          class="w-full h-auto rounded-lg"
+        />
+      </div>
+      <div class="p-4">
+        <p class="text-lg font-semibold text-gray-800">{{ user.email }}</p>
+        <p class="text-gray-600">Budget: ${{ user.budget }}</p>
+      </div>
+      <div class="flex justify-end px-4 pb-4">
+        <button
+        *ngIf="userType === 'user'"
+          type="button"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded mr-2 transition duration-300 ease-in-out"
+          (click)="openUpdateForm(user.email)"
+        >
+          Edit
+        </button>
+        <button
+        *ngIf="userType === 'user'"
+          type="button"
+          class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
+          (click)="deleteuserupload(user.email)"
+        >
+          Delete
+        </button>
+
+        <button
+          type="button"
+          class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
+          [routerLink]="['/chat']" [queryParams]="{userType:'company', userid:user.email}"
+        >
+          open chat
+        </button>
+      </div>
+      <!-- Update Form -->
+      <div *ngIf="showUpdateForm === user.email" class="px-4">
+        <form (submit)="updateUserData()">
+          <div class="mb-4">
+            <label
+              for="newBudget"
+              class="block text-sm font-semibold text-gray-800 mb-2"
+              >New Budget</label
+            >
+            <input
+              type="text"
+              class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="newBudget"
+              placeholder="Enter new budget"
+              name="newBudget"
+              #newBudget
+              required
+              [(ngModel)]="budget"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="picture"
+              class="block text-sm font-semibold text-gray-800 mb-2"
+              >Select New Home Renovation Picture:</label
+            >
+            <input
+              type="file"
+              id="picture"
+              name="picture"
+              class="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              (change)="onFileSelected($event)"
+            />
+          </div>
+          <button
+
+            type="submit"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded transition duration-300 ease-in-out"
+          >
+            Update
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
